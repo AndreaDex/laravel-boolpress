@@ -80,7 +80,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|max:150',
+            'subtitle' => 'nullable|max:150',
+            'author' => 'required|max:100',
+            'body' => 'required',
+            'poster' => 'nullable|string|max:255',
+        ]);
+
+        $post->update($validated);
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**

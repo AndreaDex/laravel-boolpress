@@ -22,7 +22,7 @@
                 <td>{{$post->subtitle}}</td>
                 <td>{{$post->author}}</td>
                 <td>{{$post->body}}</td>
-                <td>{{$post->poster}}</td>
+                <td><img src="{{$post->poster}}" width="100" alt=""></td>
                 <td><a class="btn btn-primary" href="{{route('admin.posts.show',$post->id)}}" role="button">SHOW</a>
                     <a class="btn btn-primary" href="{{route('admin.posts.edit',$post->id)}}" role="button">EDIT</a>
                     <a class="btn btn-primary" href="" role="button">DELETE</a>

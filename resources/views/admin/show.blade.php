@@ -12,8 +12,8 @@
             <h6> {{$post->subtitle}}</h6>
 
             <p class="card-text"> {{$post->body}}</p>
-            <p class="card-text">{{$post->author}}</p>
-            <span>Date : {{$post->update_at}}</span>
+            <p class="card-text">Autore : {{$post->author}}</p>
+            <span>Date : {{$post->updated_at}}</span>
         </div>
     </div>
 </div>
