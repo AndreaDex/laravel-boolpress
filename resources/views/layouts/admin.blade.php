@@ -32,7 +32,7 @@
                 <div class="sidebar-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="{{route('admin.dashbord')}}">
                                 <span><i class="fas fa-house-user"></i></span>
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
@@ -45,26 +45,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.posts.create')}}">
-                                <span data-feather="shopping-cart"></span>
+                                <span><i class="fas fa-plus-square"></i></span>
                                 Create
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
-                                Customers
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="layers"></span>
-                                Integrations
                             </a>
                         </li>
                     </ul>

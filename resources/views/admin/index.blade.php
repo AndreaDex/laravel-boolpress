@@ -23,9 +23,16 @@
                 <td>{{$post->author}}</td>
                 <td>{{$post->body}}</td>
                 <td><img src="{{$post->poster}}" width="100" alt=""></td>
-                <td><a class="btn btn-primary" href="{{route('admin.posts.show',$post->id)}}" role="button">SHOW</a>
-                    <a class="btn btn-primary" href="{{route('admin.posts.edit',$post->id)}}" role="button">EDIT</a>
-                    <a class="btn btn-primary" href="" role="button">DELETE</a>
+                <td><a class="btn btn-secondary m-1" href="{{route('admin.posts.show',$post->id)}}" role="button">SHOW</a>
+                    <a class="btn btn-primary m-1" href="{{route('admin.posts.edit',$post->id)}}" role="button">EDIT</a>
+                    <!-- <a class="btn btn-danger m-1" href="{{route('admin.posts.destroy',$post->id)}}" role="button">DELETE</a> -->
+                    <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+
+                        <input class="btn-danger m-1" type="submit" value="Delete" />
+
+                    </form>
                 </td>
 
 
