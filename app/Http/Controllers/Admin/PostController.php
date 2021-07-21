@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -37,7 +37,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|max:150',
+            'subtitle' => 'nullable|max:150',
+            'author' => 'required|max:100',
+            'body' => 'required',
+            'poster' => 'nullable|string|max:255',
+        ]);
+
+        Post::create($validated);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -48,7 +57,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.show', compact('post'));
     }
 
     /**
@@ -59,7 +68,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.edit', compact('post'));
     }
 
     /**

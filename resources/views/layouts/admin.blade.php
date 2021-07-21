@@ -17,6 +17,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Styles -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
@@ -30,20 +33,20 @@
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
+                                <span><i class="fas fa-house-user"></i></span>
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file"></span>
-                                Orders
+                            <a class="nav-link" href="{{route('admin.posts.index')}}">
+                                <span><i class="fas fa-th"></i></span>
+                                Posts
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{route('admin.posts.create')}}">
                                 <span data-feather="shopping-cart"></span>
-                                Products
+                                Create
                             </a>
                         </li>
                         <li class="nav-item">
