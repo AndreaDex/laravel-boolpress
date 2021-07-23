@@ -13,7 +13,7 @@
     </div>
     @endif
 
-    <form action="{{route('admin.posts.update',$post->id)}}" method="POST">
+    <form action="{{route('admin.posts.update',$post->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method("PUT")
 
@@ -42,8 +42,10 @@
         </div>
         <!-- Poster -->
         <div class="form-group">
-            <label for="poster">Poster url</label>
-            <input type="text" class="form-control" name="poster" id="poster" value="{{$post->poster}}" placeholder="Inserisci il link ad una copertina">
+            <img src="{{asset('storage/'.$post->poster)}}" alt="">
+            <label for="poster">Carica un'immagine</label>
+            <input class="form-control" type="file" name="poster" id="poster">
+            <!-- <input type="text" class="form-control" name="poster" id="poster" value="{{$post->poster}}" placeholder="Inserisci il link ad una copertina"> -->
         </div>
 
         <!-- Submit -->

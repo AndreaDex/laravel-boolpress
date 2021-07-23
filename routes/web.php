@@ -15,10 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 /* GUEST ROUTES */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@index')->name('home');
+
+/* Blog */
 Route::resource('posts', 'Postcontroller')->only('index', 'show');
+
+/*Contact  */
+Route::get('contacs', 'ContactController@contacts')->name('contacts');
+Route::post('contacts', 'ContactController@sendFrom')->name('send.contact.form');
+
 /*  GUEST ROUTES */
 
 Auth::routes();

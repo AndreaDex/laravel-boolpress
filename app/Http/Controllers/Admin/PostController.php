@@ -46,6 +46,9 @@ class PostController extends Controller
             'poster' => 'nullable | image |',
         ]);
 
+        /* if ($request->hasFile('image')) {
+
+        } */
         $image_path = Storage::put('post_images', $validated['poster']);
         $validated['poster'] = $image_path;
         Post::create($validated);
@@ -88,10 +91,19 @@ class PostController extends Controller
             'subtitle' => 'nullable|max:150',
             'author' => 'required|max:100',
             'body' => 'required',
-            'poster' => 'nullable|string|max:255',
+            'poster' => 'nullable | image |',
         ]);
 
+        /* 
+          Nell' if è possibile anche usare il metodo array_key_exist('poster',$validate)
+         */
+        if ($request->hasFile('image')) {
+            $image_path = Storage::put('post_images', $validated['poster']);
+            $validated['poster'] = $image_path;
+        }
+
         $post->update($validated);
+
         return redirect()->route('admin.posts.show', $post->id);
     }
 
