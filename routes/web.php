@@ -22,7 +22,7 @@ Route::resource('posts', 'Postcontroller')->only('index', 'show');
 
 /*Contact  */
 Route::get('contacs', 'ContactController@contacts')->name('contacts');
-Route::post('contacts', 'ContactController@sendFrom')->name('send.contact.form');
+Route::post('contacts', 'ContactController@sendForm')->name('send.contact.form');
 
 /*  GUEST ROUTES */
 

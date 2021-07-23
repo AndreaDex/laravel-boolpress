@@ -3,8 +3,25 @@
 @section('content')
 <div class="container">
     <h1>Contact Me</h1>
+    <!-- Messaggio operazione riuscita -->
+    @if(session('message'))
+    <div class="alert alert-success" role="alert">
+        <strong>{{session('message')}}</strong>
+    </div>
+    @endif
 
-    <form action="{{route('send.contact.form)}}" method="post">
+    <!-- Messaggi di errore -->
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <form action="{{route('send.contact.form')}}" method="POST">
         @csrf
         <!-- Name -->
         <div class="form-group">
@@ -22,7 +39,6 @@
         <div class="form-group">
             <label for="dob">Data di nascita</label>
             <input class="form-control" type="date" name="dob" id="dob">
-
         </div>
 
         <!-- Email -->
@@ -40,6 +56,4 @@
         <button class="btn btn-primary btn-block" type="submit">Invia</button>
     </form>
 </div>
-
-
 @endsection

@@ -1,5 +1,29 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<h1>Hai ricevuto un messaggio</h1>
-@endsection
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hai ricevuto un nuovo messaggio</h1>
+
+
+
+
+    <em>Da: {{$data['name']}}</em>
+    <em>Email: {{$data['email']}}</em>
+
+    <em>Message</em>
+    <p>{{$data['message']}}</p>
+
+
+    Thanks,
+    {{ config('app.name') }}
+
+</body>
+
+</html>
