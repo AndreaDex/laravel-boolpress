@@ -13,7 +13,7 @@
     </div>
     @endif
 
-    <form action="{{route('admin.posts.store')}}" method="POST">
+    <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <!-- Title -->
         <div class="form-group">
@@ -39,9 +39,14 @@
             <textarea class="form-control" name="body" id="body" rows="3">{{old('body')}}</textarea>
         </div>
         <!-- Poster -->
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="poster">Poster url</label>
             <input type="text" class="form-control" name="poster" id="poster" value="{{old('poster')}}" placeholder="Inserisci il link ad una copertina">
+        </div>
+ -->
+        <div class="form-group">
+            <label for="poster">Carica un'immagine</label>
+            <input class="form-control" type="file" name="poster" id="poster">
         </div>
 
         <!-- Submit -->
