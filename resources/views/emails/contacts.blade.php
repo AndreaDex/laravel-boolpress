@@ -1,3 +1,9 @@
+<?php
+
+dd($name);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,11 +20,11 @@
 
 
 
-    <em>Da: {{$data['name']}}</em>
-    <em>Email: {{$data['email']}}</em>
+    <em>Da: {{$name}}</em>
+    <em>Email: {{$email}}</em>
 
     <em>Message</em>
-    <p>{{$data['message']}}</p>
+    <p>{{$message}}</p>
 
 
     Thanks,

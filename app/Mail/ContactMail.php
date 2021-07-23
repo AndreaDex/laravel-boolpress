@@ -6,21 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Contact;
 
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+
+    protected $contact;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(array $data)
+    public function __construct(Contact $contact)
     {
-        $this->data = $data;
+        $this->contact = $contact;
     }
 
     /**
@@ -33,6 +35,11 @@ class ContactMail extends Mailable
         return $this
             ->from('noreply@noreply.com')
             ->subject('Unknow')
-            ->view('emails.contacts');
+            ->view('emails.contacts')->with([
+                'name' => $this->contact->name,
+                'surname' => $this->contact->surname,
+                'message' => $this->contact->message,
+                'email' => $this->contact->email,
+            ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Contact;
 
 class ContactController extends Controller
 {
@@ -30,8 +31,8 @@ class ContactController extends Controller
         /* 
         * Invio dell'email
         */
-
-        Mail::to('prova@admin.com')->send(new ContactMail($validated));
+        $mail = Contact::create($validated);
+        Mail::to('prova@admin.com')->send(new ContactMail($mail));
         return redirect()->back()->with('message', 'Grazie per averci contattato.');
     }
 }
