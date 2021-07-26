@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,7 @@ Route::post('contacts', 'ContactController@sendForm')->name('send.contact.form')
 
 /*  GUEST ROUTES */
 
-Auth::routes();
+
 
 
 
@@ -38,3 +39,9 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
 });
 
 /* ADMIN ROUTES */
+
+
+
+/* Register false chiude le registrazioni al sito */
+//Auth::routes(['register' => false]);
+Auth::routes();

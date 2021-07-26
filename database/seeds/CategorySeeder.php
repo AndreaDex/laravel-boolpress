@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -11,6 +12,12 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $categories = ['Politica', 'Economia', 'Italia', 'Estero', 'Lifestyle', 'Sport'];
+        foreach ($categories as $category) {
+            $el = new Category();
+            $el->title = $category;
+            $el->slag = Str::slug($el->name);
+            $el->save();
+        }
     }
 }
