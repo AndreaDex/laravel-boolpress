@@ -10967,6 +10967,10 @@ body {
   vertical-align: text-bottom;
 }
 
+#sidebarMenu {
+  position: relative !important;
+}
+
 /*
  * Sidebar
  */

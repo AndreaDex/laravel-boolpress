@@ -45,7 +45,7 @@ class PostController extends Controller
             'subtitle' => 'nullable | max:150',
             'author' => 'required | max:100',
             'body' => 'required',
-            'poster' => 'nullable | image',
+            'poster' => 'nullable | mimes:jpeg,jpg,png ',
             'category_id' => 'nullable | exists:categories,id',
         ]);
         // ddd($validated);
@@ -95,18 +95,18 @@ class PostController extends Controller
             'subtitle' => 'nullable|max:150',
             'author' => 'required|max:100',
             'body' => 'required',
-            'poster' => 'nullable',
+            'poster' => 'nullable | mimes:jpeg,jpg,png',
             'category_id' => 'nullable | exists:categories,id',
         ]);
 
         /* 
           Nell' if è possibile anche usare il metodo array_key_exist('poster',$validate)
          */
-        if ($request->hasFile('image')) {
-            $image_path = Storage::put('post_images', $validated['poster']);
-            $validated['poster'] = $image_path;
-        }
+        /*  if ($request->hasFile('image')) {
+        } */
 
+        $image_path = Storage::put('post_images', $validated['poster']);
+        $validated['poster'] = $image_path;
         $post->update($validated);
 
         return redirect()->route('admin.posts.show', $post->id);

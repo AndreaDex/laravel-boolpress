@@ -1,6 +1,6 @@
 <?php
 
-/* dd($name); */
+// ddd($mail_message);
 
 ?>
 
@@ -24,7 +24,7 @@
     <em>Email: {{$email}}</em>
 
     <em>Message</em>
-    <p>{{$message}}</p>
+    <p>{{$mail_message}}</p>
 
 
     Thanks,
