@@ -43,9 +43,9 @@ class PostController extends Controller
             'subtitle' => 'nullable | max:150',
             'author' => 'required | max:100',
             'body' => 'required',
-            'poster' => 'nullable | image |',
+            'poster' => 'nullable',
         ]);
-
+        ddd($validated);
         /* if ($request->hasFile('image')) {
 
         } */
@@ -91,7 +91,7 @@ class PostController extends Controller
             'subtitle' => 'nullable|max:150',
             'author' => 'required|max:100',
             'body' => 'required',
-            'poster' => 'nullable | image |',
+            'poster' => 'nullable',
         ]);
 
         /* 

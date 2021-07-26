@@ -1,6 +1,6 @@
 <?php
 
-dd($name);
+/* dd($name); */
 
 ?>
 
@@ -20,7 +20,7 @@ dd($name);
 
 
 
-    <em>Da: {{$name}}</em>
+    <p><em>Da: {{$name}}</em></p>
     <em>Email: {{$email}}</em>
 
     <em>Message</em>
