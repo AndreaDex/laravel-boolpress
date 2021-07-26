@@ -45,7 +45,7 @@ class PostController extends Controller
             'subtitle' => 'nullable | max:150',
             'author' => 'required | max:100',
             'body' => 'required',
-            'poster' => 'nullable',
+            'poster' => 'nullable | image',
             'category_id' => 'nullable | exists:categories,id',
         ]);
         // ddd($validated);
@@ -96,6 +96,7 @@ class PostController extends Controller
             'author' => 'required|max:100',
             'body' => 'required',
             'poster' => 'nullable',
+            'category_id' => 'nullable | exists:categories,id',
         ]);
 
         /* 

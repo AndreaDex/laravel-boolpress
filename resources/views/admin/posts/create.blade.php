@@ -35,7 +35,7 @@
         </div>
         <!-- Contenuto -->
         <div class="form-group">
-            <label for="body">Example textarea</label>
+            <label for="body">Articolo</label>
             <textarea class="form-control" name="body" id="body" rows="3">{{old('body')}}</textarea>
         </div>
         <!-- Poster -->
@@ -49,7 +49,7 @@
         <div class="form-group">
             <label for="category_id">Categoria</label>
             <select name="category_id" id="category_id" class="form-control">
-                <option disabled>Segli una categoria</option>
+                <option value="">Segli una categoria</option>
 
                 @foreach ($categories as $category )
                 <option value="{{$category->id}}">{{$category->title}}</option>
