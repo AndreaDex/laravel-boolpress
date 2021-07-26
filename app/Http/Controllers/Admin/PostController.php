@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -44,10 +46,11 @@ class PostController extends Controller
             'author' => 'required | max:100',
             'body' => 'required',
             'poster' => 'nullable',
+            'category_id' => 'nullable | exists:categories,id',
         ]);
-        ddd($validated);
+        // ddd($validated);
         /* if ($request->hasFile('image')) {
-
+            
         } */
         $image_path = Storage::put('post_images', $validated['poster']);
         $validated['poster'] = $image_path;
@@ -74,7 +77,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**

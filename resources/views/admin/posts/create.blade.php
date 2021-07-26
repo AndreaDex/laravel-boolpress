@@ -39,15 +39,25 @@
             <textarea class="form-control" name="body" id="body" rows="3">{{old('body')}}</textarea>
         </div>
         <!-- Poster -->
-        <!-- <div class="form-group">
-            <label for="poster">Poster url</label>
-            <input type="text" class="form-control" name="poster" id="poster" value="{{old('poster')}}" placeholder="Inserisci il link ad una copertina">
-        </div>
- -->
+
         <div class="form-group">
             <label for="poster">Carica un'immagine</label>
             <input class="form-control" type="file" name="poster" id="poster">
         </div>
+
+        <!-- Categoria -->
+        <div class="form-group">
+            <label for="category_id">Categoria</label>
+            <select name="category_id" id="category_id" class="form-control">
+                <option disabled>Segli una categoria</option>
+
+                @foreach ($categories as $category )
+                <option value="{{$category->id}}">{{$category->title}}</option>
+                @endforeach
+
+            </select>
+        </div>
+
 
         <!-- Submit -->
         <button type="submit" class="btn btn-primary">Submit</button>

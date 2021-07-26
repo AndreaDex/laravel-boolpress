@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Str;
 use App\Category;
 use Illuminate\Database\Seeder;
 
@@ -16,7 +17,7 @@ class CategorySeeder extends Seeder
         foreach ($categories as $category) {
             $el = new Category();
             $el->title = $category;
-            $el->slag = Str::slug($el->name);
+            $el->slag = Str::slug($el->title);
             $el->save();
         }
     }

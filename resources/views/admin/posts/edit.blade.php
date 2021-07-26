@@ -48,6 +48,17 @@
             <!-- <input type="text" class="form-control" name="poster" id="poster" value="{{$post->poster}}" placeholder="Inserisci il link ad una copertina"> -->
         </div>
 
+        <!-- Categoria -->
+        <div class="form-group">
+            <label for="category_id">Categoria</label>
+            <select name="category_id" id="category_id" class="form-control">
+                <option disabled>Segli una categoria</option>
+                @foreach ($categories as $catagery )
+                <option value="{{$category->id}}">{{$category->title}}</option>
+                @endforeach
+            </select>
+        </div>
+
         <!-- Submit -->
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
