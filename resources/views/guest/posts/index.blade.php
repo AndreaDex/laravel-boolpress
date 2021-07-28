@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container d-flex justify-content-around flex-wrap">
+    <!-- Posts Card -->
     @foreach ($posts as $post )
-
     <div class="card">
         <img src="{{$post->poster}}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -18,5 +18,8 @@
         </div>
     </div>
     @endforeach
+
+    <!-- Paginate link -->
+    {{ $posts->links() }}
 </div>
 @endsection
