@@ -20,7 +20,7 @@
         <!-- Title -->
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" id="title" value="{{$post->title}}" placeholder="Inserisci il titolo del post">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{$post->title}}" placeholder="Inserisci il titolo del post">
         </div>
         @error('title')
         <div class="alert alert-danger">{{$message}}</div>
@@ -29,7 +29,7 @@
         <!-- Sottotitolo -->
         <div class="form-group">
             <label for="subtitle">Sottotitolo</label>
-            <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{$post->subtitle}}" placeholder="Inserisci il sottotitolo del post">
+            <input type="text" class="form-control @error('subtitle') is-invalid @enderror" name="subtitle" id="subtitle" value="{{$post->subtitle}}" placeholder="Inserisci il sottotitolo del post">
         </div>
         @error('subtitle')
         <div class="alert alert-danger">{{$message}}</div>
@@ -38,7 +38,7 @@
         <!-- Autore -->
         <div class="form-group">
             <label for="author">Autore</label>
-            <input type="text" class="form-control" name="author" id="author" value="{{$post->author}}" placeholder="Inserisci il nome dell'autore">
+            <input type="text" class="form-control @error('author') is-invalid @enderror" name="author" id="author" value="{{$post->author}}" placeholder="Inserisci il nome dell'autore">
         </div>
         @error('author')
         <div class="alert alert-danger">{{$message}}</div>
@@ -47,7 +47,7 @@
         <!-- Contenuto -->
         <div class="form-group">
             <label for="body">Articolo</label>
-            <textarea class="form-control" name="body" id="body" rows="3">{{$post->body}}</textarea>
+            <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" rows="3">{{$post->body}}</textarea>
         </div>
         @error('body')
         <div class="alert alert-danger">{{$message}}</div>
@@ -57,7 +57,7 @@
         <div class="form-group">
             <img src="{{asset('storage/'.$post->poster)}}" alt="">
             <label for="poster">Carica un'immagine</label>
-            <input class="form-control" type="file" name="poster" id="poster">
+            <input class="form-control @error('poster') is-invalid @enderror" type="file" name="poster" id="poster">
         </div>
         @error('poster')
         <div class="alert alert-danger">{{$message}}</div>
@@ -66,7 +66,7 @@
         <!-- Categoria -->
         <div class="form-group">
             <label for="category_id">Categoria</label>
-            <select name="category_id" id="category_id" class="form-control">
+            <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @enderror">
                 <option value="">Segli una categoria</option>
                 @foreach ($categories as $category )
                 <option value="{{$category->id}}" {{$category->id == old('categoty_id',$post->category_id) ? 'selected' : ''}}>{{$category->title}}</option>
@@ -80,7 +80,7 @@
         <!-- Tags -->
         <div class="form-group">
             <label for="tags">Tags</label>
-            <select multiple class="form-control" name="tags[]" id="tags">
+            <select multiple class="form-control @error('tags') is-invalid @enderror" name="tags[]" id="tags">
                 <option disabled>Select tags</option>
                 @if ($tags)
 
