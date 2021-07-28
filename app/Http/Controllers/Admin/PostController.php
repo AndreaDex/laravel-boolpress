@@ -50,6 +50,7 @@ class PostController extends Controller
             'body' => 'required',
             'poster' => 'nullable | mimes:jpeg,jpg,png ',
             'category_id' => 'nullable | exists:categories,id',
+            'tags' => 'nullable | exists:tags,id'
         ]);
         // ddd($validated);
         if ($request->has('poster')) {
@@ -57,7 +58,8 @@ class PostController extends Controller
             $image_path = Storage::put('post_images', $validated['poster']);
             $validated['poster'] = $image_path;
         }
-        Post::create($validated);
+        $post = Post::create($validated);
+        $post->tags()->attach($request->tags);
         return redirect()->route('admin.posts.index');
     }
 
