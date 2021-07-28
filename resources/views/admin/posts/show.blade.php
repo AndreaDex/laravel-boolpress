@@ -13,6 +13,20 @@
 
             <p class="card-text"> {{$post->body}}</p>
             <p class="card-text">Autore : {{$post->author}}</p>
+            <p>Categoria : {{$post->category ? $post->category->title : 'No category associated'}}
+            </p>
+            <p>Tags :
+                @forelse ($post->tags as $tag )
+                <small>#{{$tag->name}}</small>
+
+                @if(!$loop->last)
+                ,
+                @endif
+
+                @empty
+                <small>No tags associated</small>
+                @endforelse
+            </p>
             <span>Date : {{$post->updated_at}}</span>
         </div>
     </div>

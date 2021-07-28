@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,7 +30,9 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $tags = Tag::all();
+
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -49,11 +52,11 @@ class PostController extends Controller
             'category_id' => 'nullable | exists:categories,id',
         ]);
         // ddd($validated);
-        /* if ($request->hasFile('image')) {
-            
-        } */
-        $image_path = Storage::put('post_images', $validated['poster']);
-        $validated['poster'] = $image_path;
+        if ($request->has('poster')) {
+
+            $image_path = Storage::put('post_images', $validated['poster']);
+            $validated['poster'] = $image_path;
+        }
         Post::create($validated);
         return redirect()->route('admin.posts.index');
     }
@@ -66,7 +69,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.posts.show', compact('post'));
+        $tags = Tag::all();
+        return view('admin.posts.show', compact('post', 'tags'));
     }
 
     /**
