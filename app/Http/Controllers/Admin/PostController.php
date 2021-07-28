@@ -84,7 +84,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -105,16 +106,14 @@ class PostController extends Controller
             'category_id' => 'nullable | exists:categories,id',
         ]);
 
-        /* 
-          Nell' if è possibile anche usare il metodo array_key_exist('poster',$validate)
-         */
-        /*  if ($request->hasFile('image')) {
-        } */
+        if ($request->has('poster')) {
 
-        $image_path = Storage::put('post_images', $validated['poster']);
-        $validated['poster'] = $image_path;
+            $image_path = Storage::put('post_images', $validated['poster']);
+            $validated['poster'] = $image_path;
+        }
+
         $post->update($validated);
-
+        $post->tags()->sync($request->tags);
         return redirect()->route('admin.posts.show', $post->id);
     }
 
@@ -127,7 +126,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-
+        $post->tags()->detach();
         return redirect()->route('admin.posts.index');
     }
 }
