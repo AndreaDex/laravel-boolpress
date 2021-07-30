@@ -48,6 +48,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('vue') }}">
+                                Vue
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="à">
                                 About Us
                             </a>

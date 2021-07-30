@@ -10942,8 +10942,3 @@ a.text-dark:focus {
   }
 }
 
-.card {
-  margin: 10px;
-  flex-basis: calc(100% / 3 - 20px);
-}
-

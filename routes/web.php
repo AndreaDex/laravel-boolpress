@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 /* GUEST ROUTES */
 
 Route::get('/', 'PageController@index')->name('home');
+Route::get('vueposts', 'PageController@vueindex')->name('vue');
 
 /* Blog */
 Route::resource('posts', 'Postcontroller')->only('index', 'show');
