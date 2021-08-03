@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('posts', 'API\PostController@index');
 
+Route::get('categries', function () {
+    $categories = Category::all();
+    return $categories;
+});
 
 
 /* 

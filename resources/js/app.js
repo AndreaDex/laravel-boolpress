@@ -25,6 +25,10 @@ Vue.component(
     "example-component",
     require("./components/ExampleComponent.vue").default
 );
+Vue.component(
+    "prova-component",
+    require("./components/ProvaComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,6 +47,7 @@ const app = new Vue({
             .then(resp => {
                 //console.log(resp);
                 this.posts = resp.data.data;
+                console.log(this.posts);
             })
             .catch(e => {
                 console.log("Errore" + e);
